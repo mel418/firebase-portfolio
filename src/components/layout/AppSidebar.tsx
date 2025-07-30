@@ -74,7 +74,6 @@ export function AppSidebar() {
             GitHub Profile
           </Button>
         </a>
-        <p className="text-xs text-muted-foreground text-center mt-2">© 2025 Melody Gatan. All Rights Reserved.</p>
       </div>
     </aside>
   );

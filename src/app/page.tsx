@@ -313,6 +313,9 @@ export default function Home() {
             </Section>
           </div>
         </main>
+        <footer className="text-center p-4 text-xs text-muted-foreground">
+          © 2025 Melody Gatan. All Rights Reserved.
+        </footer>
       </div>
     </div>
   );

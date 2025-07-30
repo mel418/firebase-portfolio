@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Play } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -13,8 +14,16 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ title, description, imageUrl, href, tags, dataAiHint }: ProjectCardProps) {
+  const isInternal = href.startsWith('/');
+  const CardContentWrapper = isInternal ? Link : 'a';
+
   return (
-    <a href={href} target={href.startsWith('/') ? '_self' : '_blank'} rel="noopener noreferrer" className="block group rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+    <CardContentWrapper 
+      href={href} 
+      target={isInternal ? '_self' : '_blank'} 
+      rel={isInternal ? '' : 'noopener noreferrer'} 
+      className="block group rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+    >
       <Card className="bg-card hover:bg-accent transition-colors duration-300 h-full flex flex-col overflow-hidden">
         <div className="relative aspect-square w-full">
           <Image 
@@ -43,6 +52,6 @@ export function ProjectCard({ title, description, imageUrl, href, tags, dataAiHi
           </div>
         </CardContent>
       </Card>
-    </a>
+    </CardContentWrapper>
   );
 }

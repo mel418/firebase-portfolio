@@ -11,6 +11,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+
 
 const projects = [
   {
@@ -48,11 +50,35 @@ const projects = [
 ];
 
 const skills = {
-  languages: ['python', 'cplusplus', 'java', 'kotlin', 'cs', 'js'],
-  web: ['react', 'html', 'css', 'nextjs', 'nodejs', 'php'],
-  databases: ['mysql', 'firebase', 'mongodb', 'convex'],
-  tools: ['git', 'vscode', 'jira', 'aws', 'linux'],
-};
+    languages: [
+      { id: 'python', name: 'Python' },
+      { id: 'cpp', name: 'C++' },
+      { id: 'java', name: 'Java' },
+      { id: 'kotlin', name: 'Kotlin' },
+      { id: 'csharp', name: 'C#' },
+      { id: 'js', name: 'JavaScript' },
+    ],
+    web: [
+      { id: 'react', name: 'React' },
+      { id: 'html', name: 'HTML5' },
+      { id: 'css', name: 'CSS3' },
+      { id: 'nextjs', name: 'Next.js' },
+      { id: 'nodejs', name: 'Node.js' },
+      { id: 'php', name: 'PHP' },
+    ],
+    databases: [
+      { id: 'mysql', name: 'MySQL' },
+      { id: 'firebase', name: 'Firebase' },
+      { id: 'mongodb', name: 'MongoDB' },
+    ],
+    tools: [
+      { id: 'git', name: 'Git' },
+      { id: 'vscode', name: 'VS Code' },
+      { id: 'jira', name: 'Jira' },
+      { id: 'aws', name: 'Amazon Web Services' },
+      { id: 'linux', name: 'Linux' },
+    ],
+  };
 
 
 export default function Home() {
@@ -169,32 +195,70 @@ export default function Home() {
             </Section>
 
             <Section id="skills" icon={Code} title="Technical Skills">
+            <TooltipProvider>
               <div className="space-y-8">
                 <div>
                   <h3 className="text-2xl font-semibold mb-4">Languages</h3>
                   <div className="flex flex-wrap gap-4">
-                    <img src={`https://skillicons.dev/icons?i=${skills.languages.join(',')}`} alt="Language Skills" />
+                    {skills.languages.map((skill) => (
+                      <Tooltip key={skill.id}>
+                        <TooltipTrigger>
+                          <img src={`https://skillicons.dev/icons?i=${skill.id}`} alt={`${skill.name} icon`} className="h-12 w-12" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>{skill.name}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    ))}
                   </div>
                 </div>
                 <div>
                   <h3 className="text-2xl font-semibold mb-4">Web Development</h3>
                   <div className="flex flex-wrap gap-4">
-                    <img src={`https://skillicons.dev/icons?i=${skills.web.join(',')}`} alt="Web Development Skills" />
+                     {skills.web.map((skill) => (
+                      <Tooltip key={skill.id}>
+                        <TooltipTrigger>
+                          <img src={`https://skillicons.dev/icons?i=${skill.id}`} alt={`${skill.name} icon`} className="h-12 w-12" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>{skill.name}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    ))}
                   </div>
                 </div>
                 <div>
                   <h3 className="text-2xl font-semibold mb-4">Databases</h3>
                   <div className="flex flex-wrap gap-4">
-                     <img src={`https://skillicons.dev/icons?i=${skills.databases.join(',')}`} alt="Database Skills" />
+                    {skills.databases.map((skill) => (
+                      <Tooltip key={skill.id}>
+                        <TooltipTrigger>
+                          <img src={`https://skillicons.dev/icons?i=${skill.id}`} alt={`${skill.name} icon`} className="h-12 w-12" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>{skill.name}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    ))}
                   </div>
                 </div>
                  <div>
                   <h3 className="text-2xl font-semibold mb-4">Tools & Technologies</h3>
                   <div className="flex flex-wrap gap-4">
-                    <img src={`https://skillicons.dev/icons?i=${skills.tools.join(',')}`} alt="Tools and Technologies" />
+                    {skills.tools.map((skill) => (
+                      <Tooltip key={skill.id}>
+                        <TooltipTrigger>
+                           <img src={`https://skillicons.dev/icons?i=${skill.id}`} alt={`${skill.name} icon`} className="h-12 w-12" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>{skill.name}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    ))}
                   </div>
                 </div>
               </div>
+              </TooltipProvider>
             </Section>
 
             <Section id="education" icon={GraduationCap} title="Education">

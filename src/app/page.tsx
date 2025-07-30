@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Github, Linkedin, Mail, MapPin, Play, GraduationCap, Code, Briefcase, User, Send, Award, Users, BookUser } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Play, GraduationCap, Code, Briefcase, User, Send, Award, Users, BookUser, Library } from 'lucide-react';
 
 import { AppSidebar } from '@/components/layout/AppSidebar';
 import { Header } from '@/components/layout/Header';
@@ -8,7 +8,7 @@ import { ProjectCard } from '@/components/ProjectCard';
 import { Section } from '@/components/Section';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -55,7 +55,7 @@ const skills = {
       { id: 'cpp', name: 'C++' },
       { id: 'java', name: 'Java' },
       { id: 'kotlin', name: 'Kotlin' },
-      { id: 'csharp', name: 'C#' },
+      { id: 'cs', name: 'C#' },
       { id: 'js', name: 'JavaScript' },
     ],
     web: [
@@ -70,12 +70,13 @@ const skills = {
       { id: 'mysql', name: 'MySQL' },
       { id: 'firebase', name: 'Firebase' },
       { id: 'mongodb', name: 'MongoDB' },
+      { id: 'convex', name: 'Convex' },
     ],
     tools: [
       { id: 'git', name: 'Git' },
       { id: 'vscode', name: 'VS Code' },
       { id: 'jira', name: 'Jira' },
-      { id: 'aws', name: 'Amazon Web Services' },
+      { id: 'aws', name: 'AWS' },
       { id: 'linux', name: 'Linux' },
     ],
   };
@@ -196,66 +197,90 @@ export default function Home() {
 
             <Section id="skills" icon={Code} title="Technical Skills">
             <TooltipProvider>
-              <div className="space-y-8">
+              <div className="space-y-12">
                 <div>
                   <h3 className="text-2xl font-semibold mb-4">Languages</h3>
-                  <div className="flex flex-wrap gap-4">
-                    {skills.languages.map((skill) => (
-                      <Tooltip key={skill.id}>
-                        <TooltipTrigger>
-                          <img src={`https://skillicons.dev/icons?i=${skill.id}`} alt={`${skill.name} icon`} className="h-12 w-12" />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>{skill.name}</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    ))}
-                  </div>
+                    <Carousel opts={{ align: "start", loop: true }}>
+                       <CarouselContent>
+                        {skills.languages.map((skill) => (
+                           <CarouselItem key={skill.id} className="basis-1/4 md:basis-1/6 lg:basis-1/8">
+                            <Tooltip>
+                              <TooltipTrigger>
+                                <img src={`https://skillicons.dev/icons?i=${skill.id}`} alt={`${skill.name} icon`} className="h-20 w-20" />
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>{skill.name}</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <CarouselPrevious />
+                      <CarouselNext />
+                    </Carousel>
                 </div>
                 <div>
                   <h3 className="text-2xl font-semibold mb-4">Web Development</h3>
-                  <div className="flex flex-wrap gap-4">
-                     {skills.web.map((skill) => (
-                      <Tooltip key={skill.id}>
-                        <TooltipTrigger>
-                          <img src={`https://skillicons.dev/icons?i=${skill.id}`} alt={`${skill.name} icon`} className="h-12 w-12" />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>{skill.name}</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    ))}
-                  </div>
+                   <Carousel opts={{ align: "start", loop: true }}>
+                       <CarouselContent>
+                        {skills.web.map((skill) => (
+                          <CarouselItem key={skill.id} className="basis-1/4 md:basis-1/6 lg:basis-1/8">
+                            <Tooltip>
+                              <TooltipTrigger>
+                                <img src={`https://skillicons.dev/icons?i=${skill.id}`} alt={`${skill.name} icon`} className="h-20 w-20" />
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>{skill.name}</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <CarouselPrevious />
+                      <CarouselNext />
+                    </Carousel>
                 </div>
                 <div>
                   <h3 className="text-2xl font-semibold mb-4">Databases</h3>
-                  <div className="flex flex-wrap gap-4">
-                    {skills.databases.map((skill) => (
-                      <Tooltip key={skill.id}>
-                        <TooltipTrigger>
-                          <img src={`https://skillicons.dev/icons?i=${skill.id}`} alt={`${skill.name} icon`} className="h-12 w-12" />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>{skill.name}</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    ))}
-                  </div>
+                  <Carousel opts={{ align: "start", loop: true }}>
+                       <CarouselContent>
+                        {skills.databases.map((skill) => (
+                           <CarouselItem key={skill.id} className="basis-1/4 md:basis-1/6 lg:basis-1/8">
+                            <Tooltip>
+                              <TooltipTrigger>
+                                <img src={`https://skillicons.dev/icons?i=${skill.id}`} alt={`${skill.name} icon`} className="h-20 w-20" />
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>{skill.name}</p>
+                              </TooltipContent>
+                            </Tooltip>
+                           </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <CarouselPrevious />
+                      <CarouselNext />
+                    </Carousel>
                 </div>
                  <div>
                   <h3 className="text-2xl font-semibold mb-4">Tools & Technologies</h3>
-                  <div className="flex flex-wrap gap-4">
-                    {skills.tools.map((skill) => (
-                      <Tooltip key={skill.id}>
-                        <TooltipTrigger>
-                           <img src={`https://skillicons.dev/icons?i=${skill.id}`} alt={`${skill.name} icon`} className="h-12 w-12" />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>{skill.name}</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    ))}
-                  </div>
+                   <Carousel opts={{ align: "start", loop: true }}>
+                       <CarouselContent>
+                        {skills.tools.map((skill) => (
+                          <CarouselItem key={skill.id} className="basis-1/4 md:basis-1/6 lg:basis-1/8">
+                            <Tooltip>
+                              <TooltipTrigger>
+                                <img src={`https://skillicons.dev/icons?i=${skill.id}`} alt={`${skill.name} icon`} className="h-20 w-20" />
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>{skill.name}</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <CarouselPrevious />
+                      <CarouselNext />
+                    </Carousel>
                 </div>
               </div>
               </TooltipProvider>

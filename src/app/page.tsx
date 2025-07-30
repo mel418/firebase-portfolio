@@ -48,11 +48,12 @@ const projects = [
 ];
 
 const skills = {
-  languages: ['Python', 'C++', 'Java', 'Kotlin', 'C#', 'JavaScript'],
-  web: ['React', 'HTML/CSS', 'Next.js', 'Node.js', 'PHP'],
-  databases: ['MySQL', 'SQL', 'Firebase (Firestore)', 'MongoDB', 'Convex'],
-  tools: ['Git', 'VS Code', 'Jira', 'AWS', 'CI/CD', 'Agile/Scrum', 'REST APIs', 'Linux'],
+  languages: ['python', 'cplusplus', 'java', 'kotlin', 'cs', 'js'],
+  web: ['react', 'html', 'css', 'nextjs', 'nodejs', 'php'],
+  databases: ['mysql', 'sql', 'firebase', 'mongodb', 'prisma'],
+  tools: ['git', 'vscode', 'jira', 'aws', 'docker', 'figma', 'linux'],
 };
+
 
 export default function Home() {
   return (
@@ -100,9 +101,50 @@ export default function Home() {
                 </div>
               </div>
             </Section>
+            
+            <Section id="experience" icon={Briefcase} title="Experience">
+               <div className="space-y-8">
+                <Card className="bg-card">
+                  <CardHeader>
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <CardTitle className="text-2xl text-primary">Web Developer Intern</CardTitle>
+                        <CardDescription className="text-lg">CSULB Esports Association</CardDescription>
+                      </div>
+                      <p className="text-muted-foreground">Sept 2023 - July 2024</p>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="list-disc pl-5 space-y-2 text-base">
+                      <li>Reduced database query response time by 60% through PHP/MySQL optimization, serving 500+ users with 99.2% uptime.</li>
+                      <li>Decreased manual registration processing time by 75% by engineering automated player tryouts system with PHP/MySQL, successfully processing 200+ signups per season with zero data loss.</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+                <Card className="bg-card">
+                  <CardHeader>
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <CardTitle className="text-2xl text-primary">Secretary</CardTitle>
+                        <CardDescription className="text-lg">Women in Computing (WiC) - CSULB</CardDescription>
+                      </div>
+                      <p className="text-muted-foreground">Aug 2023 - April 2024</p>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                     <ul className="list-disc pl-5 space-y-2 text-base">
+                      <li>Increased member engagement by 35% by automating weekly newsletter delivery to 150+ members using MailChimp with targeted content strategy.</li>
+                      <li>Boosted workshop attendance by 45% coordinating 8 technical workshops with 35+ attendees each.</li>
+                       <li>Maintained digital archives for 20+ organization documents and meeting notes.</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+            </Section>
 
-            <Section id="projects" icon={Briefcase} title="Projects">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+            <Section id="projects" icon={Play} title="Projects">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {projects.map((project) => (
                   <ProjectCard key={project.title} {...project} />
                 ))}
@@ -110,29 +152,37 @@ export default function Home() {
             </Section>
 
             <Section id="skills" icon={Code} title="Technical Skills">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="space-y-8">
                 <div>
                   <h3 className="text-2xl font-semibold mb-4">Languages</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {skills.languages.map((skill) => <Badge key={skill} className="text-lg py-1 px-3">{skill}</Badge>)}
+                  <div className="flex flex-wrap gap-4">
+                    {skills.languages.map((skill) => (
+                      <Image key={skill} src={`https://skillicons.dev/icons?i=${skill}`} alt={`${skill} icon`} width={48} height={48} title={skill} />
+                    ))}
                   </div>
                 </div>
                 <div>
                   <h3 className="text-2xl font-semibold mb-4">Web Development</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {skills.web.map((skill) => <Badge key={skill} className="text-lg py-1 px-3">{skill}</Badge>)}
+                  <div className="flex flex-wrap gap-4">
+                    {skills.web.map((skill) => (
+                      <Image key={skill} src={`https://skillicons.dev/icons?i=${skill}`} alt={`${skill} icon`} width={48} height={48} title={skill}/>
+                    ))}
                   </div>
                 </div>
                 <div>
                   <h3 className="text-2xl font-semibold mb-4">Databases</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {skills.databases.map((skill) => <Badge key={skill} className="text-lg py-1 px-3">{skill}</Badge>)}
+                  <div className="flex flex-wrap gap-4">
+                    {skills.databases.map((skill) => (
+                     <Image key={skill} src={`https://skillicons.dev/icons?i=${skill}`} alt={`${skill} icon`} width={48} height={48} title={skill}/>
+                    ))}
                   </div>
                 </div>
                  <div>
                   <h3 className="text-2xl font-semibold mb-4">Tools & Technologies</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {skills.tools.map((skill) => <Badge key={skill} className="text-lg py-1 px-3">{skill}</Badge>)}
+                  <div className="flex flex-wrap gap-4">
+                    {skills.tools.map((skill) => (
+                      <Image key={skill} src={`https://skillicons.dev/icons?i=${skill}`} alt={`${skill} icon`} width={48} height={48} title={skill}/>
+                    ))}
                   </div>
                 </div>
               </div>

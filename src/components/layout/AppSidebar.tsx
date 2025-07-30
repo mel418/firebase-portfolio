@@ -50,7 +50,7 @@ export function AppSidebar() {
           <NavLink key={item.href} {...item} />
         ))}
       </nav>
-      {aiTools.length > 0 && <Separator />}
+      {/* {aiTools.length > 0 && <Separator />}
       {aiTools.length > 0 && (
         <nav className="flex flex-col space-y-2">
           <h3 className="px-4 text-sm font-semibold text-muted-foreground uppercase tracking-wider">
@@ -60,10 +60,10 @@ export function AppSidebar() {
             <NavLink key={item.href} {...item} />
           ))}
         </nav>
-      )}
+      )} */}
       <div className="mt-auto space-y-2">
          <a href="/Melody_Gatan_Resume.pdf" target="_blank" rel="noopener noreferrer">
-          <Button variant="outline" className="w-full">
+          <Button variant="outline" className="w-full mb-5">
             <FileText className="mr-2 h-4 w-4" />
             View Resume
           </Button>

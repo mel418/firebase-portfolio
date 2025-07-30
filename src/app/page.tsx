@@ -17,16 +17,16 @@ const projects = [
   {
     title: 'Cafinity☕',
     description: 'A location-based café discovery platform with secure authentication, role-based access, and real-time search for over 200 cafes.',
-    imageUrl: 'https://placehold.co/600x600.png',
+    imageUrl: '/cafinity.png',
     href: 'https://github.com/mel418/cafinity',
     tags: ['React', 'Firebase', 'Google Maps API', 'TailwindCSS'],
     dataAiHint: 'coffee shop map',
   },
   {
-    title: 'Discord Music Recc Bot',
+    title: 'Discord Music Reccomendation Bot',
     description: 'A Discord bot that provides personalized music recommendations using the Spotify API. Won 2nd place at MarinaHacks 3.0.',
-    imageUrl: 'https://placehold.co/600x600.png',
-    href: 'https://devpost.com/software/discord-music-recc-bot',
+    imageUrl: '/serTibbles.png',
+    href: 'https://github.com/mel418/Discord-Music-Rec-Bot',
     tags: ['Python', 'Discord.py', 'Spotify API'],
     dataAiHint: 'music bot interface',
   },
@@ -34,7 +34,7 @@ const projects = [
     title: 'Notion Clone',
     description: 'A document management application with real-time collaboration features, built with Next.js and Convex.',
     imageUrl: 'https://placehold.co/600x600.png',
-    href: 'https://github.com/mel418/notion-clone',
+    href: 'https://github.com/mel418/notion-clone-yt-tutorial',
     tags: ['Next.js', 'Convex', 'React', 'TypeScript'],
     dataAiHint: 'document editor',
   },
@@ -91,7 +91,7 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
                 <div className="md:col-span-1 flex justify-center">
                   <Image
-                    src="https://avatars.githubusercontent.com/u/82139031?v=4"
+                    src="/PFP2.JPG"
                     data-ai-hint="professional portrait"
                     alt="Melody Gatan"
                     width={250}

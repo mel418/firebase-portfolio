@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, Home, Briefcase, Code, GraduationCap, Mail, Bot, Github, Library } from 'lucide-react';
+import { Menu, Home, Briefcase, Code, GraduationCap, Mail, Bot, Github, Library, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
@@ -69,8 +69,14 @@ export function MobileNav() {
             ))}
         </nav>
 
-        <div className="mt-auto pt-6">
-            <a href="https://github.com/mel418" target="_blank" rel="noopener noreferrer">
+        <div className="mt-auto pt-6 space-y-2">
+            <a href="/Melody_Gatan_Resume.pdf" target="_blank" rel="noopener noreferrer" className="block">
+              <Button variant="outline" className="w-full text-lg py-6">
+                <FileText className="mr-2 h-5 w-5" />
+                View Resume
+              </Button>
+            </a>
+            <a href="https://github.com/mel418" target="_blank" rel="noopener noreferrer" className="block">
               <Button variant="outline" className="w-full text-lg py-6">
                 <Github className="mr-2 h-5 w-5" />
                 GitHub

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Briefcase, Code, GraduationCap, Mail, Bot, Github, Library } from 'lucide-react';
+import { Home, Briefcase, Code, GraduationCap, Mail, Bot, Github, Library, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
@@ -58,14 +58,20 @@ export function AppSidebar() {
           <NavLink key={item.href} {...item} />
         ))}
       </nav>
-      <div className="mt-auto">
+      <div className="mt-auto space-y-2">
+         <a href="/Melody_Gatan_Resume.pdf" target="_blank" rel="noopener noreferrer">
+          <Button variant="outline" className="w-full">
+            <FileText className="mr-2 h-4 w-4" />
+            View Resume
+          </Button>
+        </a>
         <a href="https://github.com/mel418" target="_blank" rel="noopener noreferrer">
           <Button variant="outline" className="w-full">
             <Github className="mr-2 h-4 w-4" />
             GitHub Profile
           </Button>
         </a>
-        <p className="text-xs text-muted-foreground text-center mt-4">© 2024 Melody Gatan. All Rights Reserved.</p>
+        <p className="text-xs text-muted-foreground text-center mt-2">© 2024 Melody Gatan. All Rights Reserved.</p>
       </div>
     </aside>
   );

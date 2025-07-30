@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, Home, Briefcase, Code, GraduationCap, Mail, Bot, Github, Library } from 'lucide-react';
+import { Menu, Home, Briefcase, Code, GraduationCap, Mail, Bot, Github, LibraryMusic } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
@@ -50,7 +50,7 @@ export function MobileNav() {
       </SheetTrigger>
       <SheetContent side="right" className="w-full max-w-sm bg-card p-6 flex flex-col">
         <div className="text-3xl font-bold text-primary flex items-center gap-2 font-headline mb-8">
-            <Library className="h-8 w-8" />
+            <LibraryMusic className="h-8 w-8" />
             Melody
         </div>
 

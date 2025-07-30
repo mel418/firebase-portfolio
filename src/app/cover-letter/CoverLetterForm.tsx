@@ -39,9 +39,10 @@ export function CoverLetterForm() {
 
     const response = await generateCoverLetter({
       ...values,
-      name: 'Melody',
-      email: 'melanie.csulb@example.com',
+      name: 'Melody Gatan',
+      email: 'melodygatan@gmail.com',
       github: 'https://github.com/mel418',
+      linkedin: 'https://linkedin.com/in/melody-gatan',
     });
 
     setIsLoading(false);

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Github, Linkedin, Mail, MapPin, Play, GraduationCap, Code, Briefcase, Bot, User, Send } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Play, GraduationCap, Code, Briefcase, Bot, User, Send, Award } from 'lucide-react';
 
 import { AppSidebar } from '@/components/layout/AppSidebar';
 import { Header } from '@/components/layout/Header';
@@ -14,43 +14,44 @@ import { Textarea } from '@/components/ui/textarea';
 
 const projects = [
   {
+    title: 'Cafinity☕',
+    description: 'A location-based café discovery platform with secure authentication, role-based access, and real-time search for over 200 cafes.',
+    imageUrl: 'https://placehold.co/600x600.png',
+    href: 'https://github.com/mel418/cafinity',
+    tags: ['React', 'Firebase', 'Google Maps API', 'TailwindCSS'],
+    dataAiHint: 'coffee shop map',
+  },
+  {
+    title: 'Discord Music Recc Bot',
+    description: 'A Discord bot that provides personalized music recommendations using the Spotify API. Won 2nd place at MarinaHacks 3.0.',
+    imageUrl: 'https://placehold.co/600x600.png',
+    href: 'https://devpost.com/software/discord-music-recc-bot',
+    tags: ['Python', 'Discord.py', 'Spotify API'],
+    dataAiHint: 'music bot interface',
+  },
+  {
+    title: 'Notion Clone',
+    description: 'A document management application with real-time collaboration features, built with Next.js and Convex.',
+    imageUrl: 'https://placehold.co/600x600.png',
+    href: 'https://github.com/mel418/notion-clone',
+    tags: ['Next.js', 'Convex', 'React', 'TypeScript'],
+    dataAiHint: 'document editor',
+  },
+  {
     title: 'AI Cover Letter Generator',
     description: 'A tool integrated into this portfolio that uses generative AI to create personalized cover letters based on a job description.',
     imageUrl: 'https://placehold.co/600x600.png',
     href: '/cover-letter',
-    tags: ['Next.js', 'React', 'TypeScript', 'GenAI', 'TailwindCSS'],
+    tags: ['Next.js', 'React', 'GenAI', 'TailwindCSS'],
     dataAiHint: 'abstract code',
-  },
-  {
-    title: 'Portfolio Website',
-    description: 'This Spotify-themed portfolio website, built to showcase my skills and projects in an interactive and visually appealing way.',
-    imageUrl: 'https://placehold.co/600x600.png',
-    href: 'https://github.com/mel418/portfolio',
-    tags: ['Next.js', 'React', 'TypeScript', 'ShadCN UI', 'Figma'],
-    dataAiHint: 'design technology',
-  },
-  {
-    title: 'E-commerce Platform',
-    description: 'A full-stack e-commerce application with features like product catalog, shopping cart, user authentication, and order processing.',
-    imageUrl: 'https://placehold.co/600x600.png',
-    href: 'https://github.com/mel418/ecommerce',
-    tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Stripe API'],
-    dataAiHint: 'online shopping',
-  },
-  {
-    title: 'Task Management App',
-    description: 'A Kanban-style task management application that helps users organize their tasks, set deadlines, and track progress.',
-    imageUrl: 'https://placehold.co/600x600.png',
-    href: 'https://github.com/mel418/task-manager',
-    tags: ['Vue.js', 'Firebase', 'Vuetify'],
-    dataAiHint: 'productivity application',
   },
 ];
 
 const skills = {
-  languages: ['Java', 'Python', 'JavaScript', 'TypeScript', 'HTML/CSS', 'SQL'],
-  frameworks: ['React', 'Next.js', 'Node.js', 'Express', 'Spring Boot', 'TailwindCSS'],
-  tools: ['Git', 'Docker', 'Figma', 'Postman', 'Jira', 'Firebase'],
+  languages: ['Python', 'C++', 'Java', 'Kotlin', 'C#', 'JavaScript'],
+  web: ['React', 'HTML/CSS', 'Next.js', 'Node.js', 'PHP'],
+  databases: ['MySQL', 'SQL', 'Firebase (Firestore)', 'MongoDB', 'Convex'],
+  tools: ['Git', 'VS Code', 'Jira', 'AWS', 'CI/CD', 'Agile/Scrum', 'REST APIs', 'Linux'],
 };
 
 export default function Home() {
@@ -67,16 +68,16 @@ export default function Home() {
                   <Image
                     src="https://avatars.githubusercontent.com/u/82139031?v=4"
                     data-ai-hint="professional portrait"
-                    alt="Melody"
+                    alt="Melody Gatan"
                     width={250}
                     height={250}
                     className="rounded-full shadow-lg border-4 border-primary"
                   />
                 </div>
                 <div className="md:col-span-2 space-y-4">
-                  <h1 className="text-5xl font-headline font-bold">Melody</h1>
+                  <h1 className="text-5xl font-headline font-bold">Melody Gatan</h1>
                   <p className="text-xl text-muted-foreground">
-                    Senior Computer Science Student at California State University, Long Beach (CSULB).
+                    Software Engineer | Full-Stack Developer
                   </p>
                   <p className="text-lg">
                     Passionate about developing innovative and user-centric web applications. Eager to apply my skills in a dynamic and challenging environment.
@@ -89,10 +90,10 @@ export default function Home() {
                     <a href="https://github.com/mel418" target="_blank" rel="noopener noreferrer">
                       <Button variant="outline" size="icon"><Github /></Button>
                     </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer">
+                    <a href="https://linkedin.com/in/melody-gatan" target="_blank" rel="noopener noreferrer">
                        <Button variant="outline" size="icon"><Linkedin /></Button>
                     </a>
-                    <a href="#contact">
+                    <a href="mailto:melodygatan@gmail.com">
                        <Button variant="outline" size="icon"><Mail /></Button>
                     </a>
                   </div>
@@ -108,8 +109,8 @@ export default function Home() {
               </div>
             </Section>
 
-            <Section id="skills" icon={Code} title="Key Skills">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Section id="skills" icon={Code} title="Technical Skills">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div>
                   <h3 className="text-2xl font-semibold mb-4">Languages</h3>
                   <div className="flex flex-wrap gap-2">
@@ -117,12 +118,18 @@ export default function Home() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-semibold mb-4">Frameworks & Libraries</h3>
+                  <h3 className="text-2xl font-semibold mb-4">Web Development</h3>
                   <div className="flex flex-wrap gap-2">
-                    {skills.frameworks.map((skill) => <Badge key={skill} className="text-lg py-1 px-3">{skill}</Badge>)}
+                    {skills.web.map((skill) => <Badge key={skill} className="text-lg py-1 px-3">{skill}</Badge>)}
                   </div>
                 </div>
                 <div>
+                  <h3 className="text-2xl font-semibold mb-4">Databases</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {skills.databases.map((skill) => <Badge key={skill} className="text-lg py-1 px-3">{skill}</Badge>)}
+                  </div>
+                </div>
+                 <div>
                   <h3 className="text-2xl font-semibold mb-4">Tools & Technologies</h3>
                   <div className="flex flex-wrap gap-2">
                     {skills.tools.map((skill) => <Badge key={skill} className="text-lg py-1 px-3">{skill}</Badge>)}
@@ -137,13 +144,20 @@ export default function Home() {
                   <div className="flex justify-between items-start">
                     <div>
                       <CardTitle className="text-2xl text-primary">California State University, Long Beach</CardTitle>
-                      <CardDescription className="text-lg">Bachelor of Science in Computer Science</CardDescription>
+                      <CardDescription className="text-lg">B.S. in Computer Science (GPA: 3.6)</CardDescription>
                     </div>
-                    <p className="text-muted-foreground">Expected May 2025</p>
+                    <p className="text-muted-foreground">Expected Dec 2025</p>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <p>Relevant Coursework: Data Structures and Algorithms, Software Engineering, Database Systems, Operating Systems, Web Development, Artificial Intelligence.</p>
+                <CardContent className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-lg mb-2">Relevant Coursework:</h4>
+                    <p>Data Structures, Algorithms, Discrete Structures, Database Fundamentals, Object-Oriented Programming, System Programming, Operating Systems, Mobile App Development.</p>
+                  </div>
+                   <div>
+                    <h4 className="font-semibold text-lg mb-2 flex items-center gap-2"><Award />Honors:</h4>
+                    <p>President’s List (Spring 2024), Dean’s List (Fall 2023, Spring 2024)</p>
+                  </div>
                 </CardContent>
               </Card>
             </Section>
@@ -155,10 +169,10 @@ export default function Home() {
                   <CardDescription>Have a question or want to work together? Send me a message!</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <form className="space-y-4">
-                    <Input type="text" placeholder="Your Name" required />
-                    <Input type="email" placeholder="Your Email" required />
-                    <Textarea placeholder="Your Message" rows={5} required />
+                  <form action="mailto:melodygatan@gmail.com" method="post" encType="text/plain" className="space-y-4">
+                    <Input type="text" name="name" placeholder="Your Name" required />
+                    <Input type="email" name="email" placeholder="Your Email" required />
+                    <Textarea name="message" placeholder="Your Message" rows={5} required />
                     <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
                       <Send className="mr-2 h-4 w-4" /> Send Message
                     </Button>

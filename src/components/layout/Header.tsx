@@ -21,7 +21,7 @@ export function Header() {
           <path d="m10 10-2 2 2 2" />
           <path d="m14 14 2-2-2-2" />
         </svg>
-        Codeify
+        Melody
       </Link>
       <MobileNav />
     </header>

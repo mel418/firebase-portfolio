@@ -65,9 +65,9 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
                 <div className="md:col-span-1 flex justify-center">
                   <Image
-                    src="https://placehold.co/400x400.png"
+                    src="https://avatars.githubusercontent.com/u/82139031?v=4"
                     data-ai-hint="professional portrait"
-                    alt="Melanie"
+                    alt="Melody"
                     width={250}
                     height={250}
                     className="rounded-full shadow-lg border-4 border-primary"

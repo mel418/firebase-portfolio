@@ -66,7 +66,7 @@ export function MobileNav() {
                 <path d="m10 10-2 2 2 2" />
                 <path d="m14 14 2-2-2-2" />
             </svg>
-            Codeify
+            Melody
         </div>
 
         <nav className="flex flex-col space-y-3">

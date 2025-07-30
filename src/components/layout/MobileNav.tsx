@@ -85,6 +85,7 @@ export function MobileNav() {
                 GitHub
               </Button>
             </a>
+            <p className="text-xs text-muted-foreground text-center pt-4">© 2025 Melody Gatan. All Rights Reserved.</p>
         </div>
       </SheetContent>
     </Sheet>

@@ -39,7 +39,7 @@ export function CoverLetterForm() {
 
     const response = await generateCoverLetter({
       ...values,
-      name: 'Melanie',
+      name: 'Melody',
       email: 'melanie.csulb@example.com',
       github: 'https://github.com/mel418',
     });

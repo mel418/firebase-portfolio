@@ -74,7 +74,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="md:col-span-2 space-y-4">
-                  <h1 className="text-5xl font-headline font-bold">Melanie</h1>
+                  <h1 className="text-5xl font-headline font-bold">Melody</h1>
                   <p className="text-xl text-muted-foreground">
                     Senior Computer Science Student at California State University, Long Beach (CSULB).
                   </p>

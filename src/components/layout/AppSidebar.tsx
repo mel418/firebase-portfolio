@@ -57,7 +57,7 @@ export function AppSidebar() {
           <path d="m10 10-2 2 2 2" />
           <path d="m14 14 2-2-2-2" />
         </svg>
-        Codeify
+        Melody
       </Link>
       <nav className="flex flex-col space-y-2">
         {navItems.map((item) => (
@@ -80,7 +80,7 @@ export function AppSidebar() {
             GitHub Profile
           </Button>
         </a>
-        <p className="text-xs text-muted-foreground text-center mt-4">© 2024 Melanie. All Rights Reserved.</p>
+        <p className="text-xs text-muted-foreground text-center mt-4">© 2024 Melody. All Rights Reserved.</p>
       </div>
     </aside>
   );

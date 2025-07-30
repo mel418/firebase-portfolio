@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Codeify - Melanie\'s Portfolio',
+  title: 'Melody - Melody\'s Portfolio',
   description: 'A Spotify-themed portfolio for a senior computer science student.',
 };
 

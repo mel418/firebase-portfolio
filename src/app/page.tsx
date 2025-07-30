@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Github, Linkedin, Mail, MapPin, Play, GraduationCap, Code, Briefcase, Bot, User, Send, Award } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Play, GraduationCap, Code, Briefcase, User, Send, Award, Users, BookUser } from 'lucide-react';
 
 import { AppSidebar } from '@/components/layout/AppSidebar';
 import { Header } from '@/components/layout/Header';
@@ -50,8 +50,8 @@ const projects = [
 const skills = {
   languages: ['python', 'cplusplus', 'java', 'kotlin', 'cs', 'js'],
   web: ['react', 'html', 'css', 'nextjs', 'nodejs', 'php'],
-  databases: ['mysql', 'sql', 'firebase', 'mongodb', 'prisma'],
-  tools: ['git', 'vscode', 'jira', 'aws', 'docker', 'figma', 'linux'],
+  databases: ['mysql', 'firebase', 'mongodb', 'convex'],
+  tools: ['git', 'vscode', 'jira', 'aws', 'linux'],
 };
 
 
@@ -139,6 +139,23 @@ export default function Home() {
                     </ul>
                   </CardContent>
                 </Card>
+                 <Card className="bg-card">
+                  <CardHeader>
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <CardTitle className="text-2xl text-primary">Fulfillment Expert</CardTitle>
+                        <CardDescription className="text-lg">Target</CardDescription>
+                      </div>
+                      <p className="text-muted-foreground">Aug 2021 - Present</p>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                     <ul className="list-disc pl-5 space-y-2 text-base">
+                      <li>Process 100+ daily orders while maintaining 98% accuracy rate and trained 3 new team members.</li>
+                      <li>Troubleshoot inventory management software issues for team of 8.</li>
+                    </ul>
+                  </CardContent>
+                </Card>
               </div>
             </Section>
 
@@ -156,60 +173,62 @@ export default function Home() {
                 <div>
                   <h3 className="text-2xl font-semibold mb-4">Languages</h3>
                   <div className="flex flex-wrap gap-4">
-                    {skills.languages.map((skill) => (
-                      <Image key={skill} src={`https://skillicons.dev/icons?i=${skill}`} alt={`${skill} icon`} width={48} height={48} title={skill} />
-                    ))}
+                    <img src={`https://skillicons.dev/icons?i=${skills.languages.join(',')}`} alt="Language Skills" />
                   </div>
                 </div>
                 <div>
                   <h3 className="text-2xl font-semibold mb-4">Web Development</h3>
                   <div className="flex flex-wrap gap-4">
-                    {skills.web.map((skill) => (
-                      <Image key={skill} src={`https://skillicons.dev/icons?i=${skill}`} alt={`${skill} icon`} width={48} height={48} title={skill}/>
-                    ))}
+                    <img src={`https://skillicons.dev/icons?i=${skills.web.join(',')}`} alt="Web Development Skills" />
                   </div>
                 </div>
                 <div>
                   <h3 className="text-2xl font-semibold mb-4">Databases</h3>
                   <div className="flex flex-wrap gap-4">
-                    {skills.databases.map((skill) => (
-                     <Image key={skill} src={`https://skillicons.dev/icons?i=${skill}`} alt={`${skill} icon`} width={48} height={48} title={skill}/>
-                    ))}
+                     <img src={`https://skillicons.dev/icons?i=${skills.databases.join(',')}`} alt="Database Skills" />
                   </div>
                 </div>
                  <div>
                   <h3 className="text-2xl font-semibold mb-4">Tools & Technologies</h3>
                   <div className="flex flex-wrap gap-4">
-                    {skills.tools.map((skill) => (
-                      <Image key={skill} src={`https://skillicons.dev/icons?i=${skill}`} alt={`${skill} icon`} width={48} height={48} title={skill}/>
-                    ))}
+                    <img src={`https://skillicons.dev/icons?i=${skills.tools.join(',')}`} alt="Tools and Technologies" />
                   </div>
                 </div>
               </div>
             </Section>
 
             <Section id="education" icon={GraduationCap} title="Education">
-              <Card className="bg-card">
-                <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <CardTitle className="text-2xl text-primary">California State University, Long Beach</CardTitle>
-                      <CardDescription className="text-lg">B.S. in Computer Science (GPA: 3.6)</CardDescription>
+              <div className="space-y-6">
+                <Card className="bg-card">
+                  <CardHeader>
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <CardTitle className="text-2xl text-primary">California State University, Long Beach</CardTitle>
+                        <CardDescription className="text-lg">B.S. in Computer Science (GPA: 3.6)</CardDescription>
+                      </div>
+                      <p className="text-muted-foreground">Expected Dec 2025</p>
                     </div>
-                    <p className="text-muted-foreground">Expected Dec 2025</p>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2">Relevant Coursework:</h4>
-                    <p>Data Structures, Algorithms, Discrete Structures, Database Fundamentals, Object-Oriented Programming, System Programming, Operating Systems, Mobile App Development.</p>
-                  </div>
-                   <div>
-                    <h4 className="font-semibold text-lg mb-2 flex items-center gap-2"><Award />Honors:</h4>
-                    <p>President’s List (Spring 2024), Dean’s List (Fall 2023, Spring 2024)</p>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2">Relevant Coursework:</h4>
+                      <p>Data Structures, Algorithms, Discrete Structures, Database Fundamentals, Object-Oriented Programming, System Programming, Operating Systems, Mobile App Development.</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg mb-2 flex items-center gap-2"><Award />Honors:</h4>
+                      <p>President’s List (Spring 2024), Dean’s List (Fall 2023, Spring 2024)</p>
+                    </div>
+                  </CardContent>
+                </Card>
+                <Card className="bg-card">
+                   <CardHeader>
+                       <h4 className="font-semibold text-lg mb-2 flex items-center gap-2"><Users />Affiliations:</h4>
+                   </CardHeader>
+                   <CardContent>
+                     <p>WiC (Women in Computing), ACM (Association for Computing Machinery), SWE (Society of Women Engineers)</p>
+                   </CardContent>
+                </Card>
+              </div>
             </Section>
             
             <Section id="contact" icon={Mail} title="Contact Me">

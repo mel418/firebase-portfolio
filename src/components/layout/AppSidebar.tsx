@@ -17,7 +17,7 @@ const navItems = [
 ];
 
 const aiTools = [
-  { href: '/cover-letter', label: 'Cover Letter AI', icon: Bot },
+  // { href: '/cover-letter', label: 'Cover Letter AI', icon: Bot },
 ];
 
 const NavLink = ({ href, label, icon: Icon }: { href: string; label: string; icon: React.ElementType }) => {
@@ -50,15 +50,17 @@ export function AppSidebar() {
           <NavLink key={item.href} {...item} />
         ))}
       </nav>
-      <Separator />
-      <nav className="flex flex-col space-y-2">
-        <h3 className="px-4 text-sm font-semibold text-muted-foreground uppercase tracking-wider">
-          AI Tools
-        </h3>
-        {aiTools.map((item) => (
-          <NavLink key={item.href} {...item} />
-        ))}
-      </nav>
+      {aiTools.length > 0 && <Separator />}
+      {aiTools.length > 0 && (
+        <nav className="flex flex-col space-y-2">
+          <h3 className="px-4 text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+            AI Tools
+          </h3>
+          {aiTools.map((item) => (
+            <NavLink key={item.href} {...item} />
+          ))}
+        </nav>
+      )}
       <div className="mt-auto space-y-2">
          <a href="/Melody_Gatan_Resume.pdf" target="_blank" rel="noopener noreferrer">
           <Button variant="outline" className="w-full">

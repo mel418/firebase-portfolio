@@ -38,14 +38,14 @@ const projects = [
     tags: ['Next.js', 'Convex', 'React', 'TypeScript'],
     dataAiHint: 'document editor',
   },
-  {
-    title: 'AI Cover Letter Generator',
-    description: 'A tool integrated into this portfolio that uses generative AI to create personalized cover letters based on a job description.',
-    imageUrl: 'https://placehold.co/600x600.png',
-    href: '/cover-letter',
-    tags: ['Next.js', 'React', 'GenAI', 'TailwindCSS'],
-    dataAiHint: 'abstract code',
-  },
+  // {
+  //   title: 'AI Cover Letter Generator',
+  //   description: 'A tool integrated into this portfolio that uses generative AI to create personalized cover letters based on a job description.',
+  //   imageUrl: 'https://placehold.co/600x600.png',
+  //   href: '/cover-letter',
+  //   tags: ['Next.js', 'React', 'GenAI', 'TailwindCSS'],
+  //   dataAiHint: 'abstract code',
+  // },
 ];
 
 const skills = {

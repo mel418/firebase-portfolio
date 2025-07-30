@@ -18,7 +18,7 @@ const navItems = [
 ];
 
 const aiTools = [
-  { href: '/cover-letter', label: 'Cover Letter AI', icon: Bot },
+  // { href: '/cover-letter', label: 'Cover Letter AI', icon: Bot },
 ];
 
 export function MobileNav() {
@@ -60,15 +60,17 @@ export function MobileNav() {
             <NavLink key={item.href} {...item} />
           ))}
         </nav>
-        <Separator className="my-6" />
-        <nav className="flex flex-col space-y-3">
-            <h3 className="px-3 text-sm font-semibold text-muted-foreground uppercase tracking-wider">
-            AI Tools
-            </h3>
-            {aiTools.map((item) => (
-            <NavLink key={item.href} {...item} />
-            ))}
-        </nav>
+        {aiTools.length > 0 && <Separator className="my-6" />}
+        {aiTools.length > 0 && (
+            <nav className="flex flex-col space-y-3">
+                <h3 className="px-3 text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+                AI Tools
+                </h3>
+                {aiTools.map((item) => (
+                <NavLink key={item.href} {...item} />
+                ))}
+            </nav>
+        )}
 
         <div className="mt-auto pt-6 space-y-2">
             <a href="/Melody_Gatan_Resume.pdf" target="_blank" rel="noopener noreferrer" className="block">

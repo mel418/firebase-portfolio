@@ -62,9 +62,9 @@ export function MobileNav() {
                 strokeLinejoin="round"
                 className="h-8 w-8"
             >
-                <circle cx="12" cy="12" r="10" />
-                <path d="m10 10-2 2 2 2" />
-                <path d="m14 14 2-2-2-2" />
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2Z"></path>
+              <circle cx="12" cy="12" r="2"></circle>
+              <path d="M14 12v-2a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"></path>
             </svg>
             Melody
         </div>

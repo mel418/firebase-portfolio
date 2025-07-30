@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Briefcase, Code, GraduationCap, Mail, Bot, Github, LibraryMusic } from 'lucide-react';
+import { Home, Briefcase, Code, GraduationCap, Mail, Bot, Github, Library } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
@@ -41,7 +41,7 @@ export function AppSidebar() {
   return (
     <aside className="hidden lg:flex flex-col w-72 border-r bg-card h-screen fixed top-0 left-0 p-6 space-y-6">
       <Link href="/" className="text-3xl font-bold text-primary flex items-center gap-2 font-headline">
-        <LibraryMusic className="h-8 w-8" />
+        <Library className="h-8 w-8" />
         Melody
       </Link>
       <nav className="flex flex-col space-y-2">

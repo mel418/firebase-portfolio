@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Loader2, Sparkles, Copy } from 'lucide-react';
 
-import { generateCoverLetter } from '@/app/actions';
+// import { generateCoverLetter } from '@/app/actions';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -37,25 +37,25 @@ export function CoverLetterForm() {
     setIsLoading(true);
     setGeneratedLetter('');
 
-    const response = await generateCoverLetter({
-      ...values,
-      name: 'Melody Gatan',
-      email: 'melodygatan@gmail.com',
-      github: 'https://github.com/mel418',
-      linkedin: 'https://linkedin.com/in/melody-gatan',
-    });
+    // const response = await generateCoverLetter({
+    //   ...values,
+    //   name: 'Melody Gatan',
+    //   email: 'melodygatan@gmail.com',
+    //   github: 'https://github.com/mel418',
+    //   linkedin: 'https://linkedin.com/in/melody-gatan',
+    // });
 
-    setIsLoading(false);
+    // setIsLoading(false);
 
-    if (response.success && response.data) {
-      setGeneratedLetter(response.data.coverLetter);
-    } else {
-      toast({
-        variant: 'destructive',
-        title: 'Error',
-        description: response.error,
-      });
-    }
+    // if (response.success && response.data) {
+    //   setGeneratedLetter(response.data.coverLetter);
+    // } else {
+    //   toast({
+    //     variant: 'destructive',
+    //     title: 'Error',
+    //     description: response.error,
+    //   });
+    // }
   };
 
   const handleCopy = () => {

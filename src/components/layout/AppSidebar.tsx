@@ -2,14 +2,15 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Briefcase, Code, GraduationCap, Mail, Bot, Github, Library, FileText } from 'lucide-react';
+import { User, Briefcase, Play, Code, GraduationCap, Mail, Bot, Github, Library, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { href: '/#profile', label: 'Profile', icon: Home },
-  { href: '/#projects', label: 'Projects', icon: Briefcase },
+  { href: '/#profile', label: 'Profile', icon: User },
+  { href: '/#experience', label: 'Experience', icon: Briefcase },
+  { href: '/#projects', label: 'Projects', icon: Play },
   { href: '/#skills', label: 'Skills', icon: Code },
   { href: '/#education', label: 'Education', icon: GraduationCap },
   { href: '/#contact', label: 'Contact', icon: Mail },

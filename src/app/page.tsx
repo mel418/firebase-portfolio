@@ -33,7 +33,7 @@ const projects = [
   {
     title: 'Notion Clone',
     description: 'A document management application with real-time collaboration features, built with Next.js and Convex.',
-    imageUrl: 'https://placehold.co/600x600.png',
+    imageUrl: '/jotion.png',
     href: 'https://github.com/mel418/notion-clone-yt-tutorial',
     tags: ['Next.js', 'Convex', 'React', 'TypeScript'],
     dataAiHint: 'document editor',

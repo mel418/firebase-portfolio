@@ -8,9 +8,6 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-   experimental: {
-    exclude: ['/cover-letter'],
-  },
   images: {
     unoptimized: true, // Add this line
     remotePatterns: [

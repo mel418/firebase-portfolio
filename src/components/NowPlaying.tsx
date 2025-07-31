@@ -1,46 +1,19 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { SiSpotify } from '@icons-pack/react-simple-icons';
-import { getNowPlayingAction } from '@/app/actions';
 import { Skeleton } from '@/components/ui/skeleton';
 
-interface Song {
+type Song = {
   isPlaying: boolean;
-  title: string;
-  artist: string;
-  album: string;
-  albumImageUrl: string;
-  songUrl: string;
-}
+  title?: string;
+  artist?: string;
+  album?: string;
+  albumImageUrl?: string;
+  songUrl?: string;
+};
 
-export function NowPlaying() {
-  const [song, setSong] = useState<Song | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchNowPlaying = async () => {
-      setIsLoading(true);
-      const result = await getNowPlayingAction();
-      if (result.success && result.data) {
-        setSong(result.data);
-      } else {
-        setSong(null); // Set to null on failure to show 'Offline'
-      }
-      setIsLoading(false);
-    };
-
-    fetchNowPlaying();
-    const interval = setInterval(fetchNowPlaying, 10000); // Poll every 10 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
-  if (isLoading) {
-    return <NowPlayingSkeleton />;
-  }
-
+export function NowPlaying({ song }: { song: Song }) {
   return (
     <a
       href={song?.songUrl || 'https://open.spotify.com'}
@@ -53,7 +26,7 @@ export function NowPlaying() {
           {song?.albumImageUrl ? (
             <Image
               src={song.albumImageUrl}
-              alt={song.album}
+              alt={song.album || 'Spotify album art'}
               fill
               className="rounded-md object-cover"
               sizes="64px"
@@ -78,7 +51,7 @@ export function NowPlaying() {
   );
 }
 
-function NowPlayingSkeleton() {
+export function NowPlayingSkeleton() {
   return (
      <div className="mt-4 block">
       <div className="flex items-center gap-4 rounded-lg border bg-card p-3">

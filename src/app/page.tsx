@@ -12,6 +12,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { NowPlaying } from '@/components/NowPlaying';
+import { getNowPlaying } from '@/lib/spotify';
 
 
 const projects = [
@@ -80,7 +81,9 @@ const skills = {
   };
 
 
-export default function Home() {
+export default async function Home() {
+  const song = await getNowPlaying();
+
   return (
     <div className="bg-background text-foreground min-h-screen">
       <AppSidebar />
@@ -123,7 +126,7 @@ export default function Home() {
                        <Button variant="outline" size="icon"><Mail /></Button>
                     </a>
                   </div>
-                   <NowPlaying />
+                   <NowPlaying song={song} />
                 </div>
               </div>
             </Section>

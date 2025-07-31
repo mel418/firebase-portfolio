@@ -11,6 +11,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { NowPlaying } from '@/components/NowPlaying';
 
 
 const projects = [
@@ -122,6 +123,7 @@ export default function Home() {
                        <Button variant="outline" size="icon"><Mail /></Button>
                     </a>
                   </div>
+                   <NowPlaying />
                 </div>
               </div>
             </Section>

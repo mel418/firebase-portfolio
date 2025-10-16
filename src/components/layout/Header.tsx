@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Library } from 'lucide-react';
 import { MobileNav } from './MobileNav';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export function Header() {
   return (
@@ -9,7 +10,10 @@ export function Header() {
         <Library className="h-7 w-7" />
         Melody
       </Link>
-      <MobileNav />
+      <div className="flex items-center gap-2">
+        <ThemeToggle />
+        <MobileNav />
+      </div>
     </header>
   );
 }

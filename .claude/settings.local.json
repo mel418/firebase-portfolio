@@ -5,7 +5,9 @@
       "Bash(git commit:*)",
       "Bash(gh repo view:*)",
       "Bash(gh api:*)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(npm install:*)",
+      "Bash(node -e:*)"
     ]
   }
 }

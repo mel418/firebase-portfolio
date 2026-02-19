@@ -32,6 +32,14 @@ const projects = [
     dataAiHint: 'coffee shop map',
   },
   {
+    title: 'PennySprout 🌱',
+    description: 'AI-powered personal finance analyzer. Upload bank statement CSVs to get spending breakdowns, trend analysis, a financial health score, and personalized saving recommendations — all powered by Claude.',
+    imageUrl: '/pennysprout_dash.png',
+    href: 'https://github.com/mel418/PennySprout-v1',
+    tags: ['Next.js', 'Claude AI', 'Recharts', 'Clerk'],
+    dataAiHint: 'finance dashboard charts',
+  },
+  {
     title: 'Discord Music Recommendation Bot',
     description: 'A Discord bot that provides personalized music recommendations using the Spotify API. Won 2nd place at MarinaHacks 3.0.',
     imageUrl: '/serTibbles.png',
@@ -111,11 +119,19 @@ export default async function Home() {
                   <AnimateIn direction="right" delay={100} className="md:col-span-2 space-y-4">
                     <h1 className="text-3xl sm:text-5xl font-headline font-bold">Melody Gatan</h1>
                     <p className="text-base sm:text-xl font-semibold animate-shimmer-text">
-                      Software Engineer | Full-Stack Developer
+                      Software Engineer | Full-Stack Dev | Matcha Connoisseur
                     </p>
                     <p className="text-sm sm:text-base text-muted-foreground">
-                      Passionate about developing innovative and user-centric web applications. Eager to apply my skills in a dynamic and challenging environment.
+                      I build full-stack apps by day and drink way too much matcha by night. Fresh CS grad from CSULB, 2nd place at MarinaHacks, and always looking for the next thing to build. Open to work! 👋
                     </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+                        🎓 CSULB CS Grad &apos;25
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+                        ☕ Matcha Connoisseur
+                      </span>
+                    </div>
                     <div className="flex items-center space-x-2 text-muted-foreground text-sm">
                       <MapPin className="h-4 w-4 shrink-0" />
                       <span>Long Beach, CA</span>
@@ -231,7 +247,7 @@ export default async function Home() {
 
             {/* PROJECTS */}
             <Section id="projects" icon={Play} title="Projects">
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
                 {projects.map((project, i) => (
                   <AnimateIn key={project.title} delay={i * 120} className="h-full">
                     <ProjectCard {...project} />

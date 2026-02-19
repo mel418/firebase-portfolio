@@ -1,11 +1,11 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import { Github, Linkedin, Mail, MapPin, Play, GraduationCap, Code, Briefcase, User, Send, Award, Users, BookUser, Library } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Play, GraduationCap, Code, Briefcase, User, Send, Award, Users } from 'lucide-react';
 
 import { AppSidebar } from '@/components/layout/AppSidebar';
 import { Header } from '@/components/layout/Header';
 import { ProjectCard } from '@/components/ProjectCard';
 import { Section } from '@/components/Section';
+import { AnimateIn } from '@/components/AnimateIn';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -14,8 +14,15 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { NowPlaying } from '@/components/NowPlaying';
 import { getNowPlaying } from '@/lib/spotify';
 
-
 const projects = [
+  {
+    title: 'Modo Matcha × Sega KDS',
+    description: "Enterprise-grade kitchen display system built for Modo Matcha's official Sega × Demon Slayer collab event, processing 145+ concurrent orders with sub-second latency and 100% uptime.",
+    imageUrl: '/Modo Matcha menu.png',
+    href: 'https://modomatcha.com',
+    tags: ['TypeScript', 'Next.js', 'Firebase', 'Firestore'],
+    dataAiHint: 'kitchen display system',
+  },
   {
     title: 'Cafinity☕',
     description: 'A location-based café discovery platform with secure authentication, role-based access, and real-time search for over 200 cafes.',
@@ -25,61 +32,48 @@ const projects = [
     dataAiHint: 'coffee shop map',
   },
   {
-    title: 'Discord Music Reccomendation Bot',
+    title: 'Discord Music Recommendation Bot',
     description: 'A Discord bot that provides personalized music recommendations using the Spotify API. Won 2nd place at MarinaHacks 3.0.',
     imageUrl: '/serTibbles.png',
     href: 'https://github.com/mel418/Discord-Music-Rec-Bot',
-    tags: ['Python', 'Discord.py', 'Spotify API'],
+    tags: ['Node.js', 'Spotify API'],
     dataAiHint: 'music bot interface',
   },
-  {
-    title: 'Notion Clone',
-    description: 'A document management application with real-time collaboration features, built with Next.js and Convex.',
-    imageUrl: '/jotion.png',
-    href: 'https://github.com/mel418/notion-clone-yt-tutorial',
-    tags: ['Next.js', 'Convex', 'React', 'TypeScript'],
-    dataAiHint: 'document editor',
-  },
-  // {
-  //   title: 'AI Cover Letter Generator',
-  //   description: 'A tool integrated into this portfolio that uses generative AI to create personalized cover letters based on a job description.',
-  //   imageUrl: 'https://placehold.co/600x600.png',
-  //   href: '/cover-letter',
-  //   tags: ['Next.js', 'React', 'GenAI', 'TailwindCSS'],
-  //   dataAiHint: 'abstract code',
-  // },
 ];
 
 const skills = {
-    languages: [
-      { id: 'python', name: 'Python' },
-      { id: 'cpp', name: 'C++' },
-      { id: 'java', name: 'Java' },
-      { id: 'kotlin', name: 'Kotlin' },
-      { id: 'cs', name: 'C#' },
-      { id: 'js', name: 'JavaScript' },
-    ],
-    web: [
-      { id: 'react', name: 'React' },
-      { id: 'html', name: 'HTML5' },
-      { id: 'css', name: 'CSS3' },
-      { id: 'nextjs', name: 'Next.js' },
-      { id: 'nodejs', name: 'Node.js' },
-      { id: 'php', name: 'PHP' },
-    ],
-    databases: [
-      { id: 'mysql', name: 'MySQL' },
-      { id: 'firebase', name: 'Firebase' },
-      { id: 'mongodb', name: 'MongoDB' },
-    ],
-    tools: [
-      { id: 'git', name: 'Git' },
-      { id: 'vscode', name: 'VS Code' },
-      { id: 'aws', name: 'AWS' },
-      { id: 'linux', name: 'Linux' },
-    ],
-  };
-
+  languages: [
+    { id: 'js', name: 'JavaScript' },
+    { id: 'ts', name: 'TypeScript' },
+    { id: 'python', name: 'Python' },
+    { id: 'java', name: 'Java' },
+    { id: 'cpp', name: 'C++' },
+    { id: 'cs', name: 'C#' },
+    { id: 'kotlin', name: 'Kotlin' },
+    { id: 'mysql', name: 'SQL' },
+  ],
+  web: [
+    { id: 'react', name: 'React' },
+    { id: 'nextjs', name: 'Next.js' },
+    { id: 'nodejs', name: 'Node.js' },
+    { id: 'express', name: 'Express' },
+    { id: 'tailwind', name: 'Tailwind CSS' },
+    { id: 'html', name: 'HTML5' },
+    { id: 'css', name: 'CSS3' },
+    { id: 'php', name: 'PHP' },
+  ],
+  databases: [
+    { id: 'mysql', name: 'MySQL' },
+    { id: 'firebase', name: 'Firebase' },
+    { id: 'mongodb', name: 'MongoDB' },
+  ],
+  tools: [
+    { id: 'git', name: 'Git' },
+    { id: 'vscode', name: 'VS Code' },
+    { id: 'aws', name: 'AWS' },
+    { id: 'linux', name: 'Linux' },
+  ],
+};
 
 export default async function Home() {
   const song = await getNowPlaying();
@@ -91,231 +85,314 @@ export default async function Home() {
         <Header />
         <main className="p-4 sm:p-6 lg:p-12">
           <div className="max-w-7xl mx-auto space-y-24">
+
+            {/* PROFILE */}
             <Section id="profile" icon={User} title="Profile">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                <div className="md:col-span-1 flex justify-center">
-                  <Image
-                    src="/PFP2.JPG"
-                    data-ai-hint="professional portrait"
-                    alt="Melody Gatan"
-                    width={250}
-                    height={250}
-                    className="rounded-full shadow-lg border-4 border-primary"
-                  />
-                </div>
-                <div className="md:col-span-2 space-y-4">
-                  <h1 className="text-5xl font-headline font-bold">Melody Gatan</h1>
-                  <p className="text-xl text-muted-foreground">
-                    Software Engineer | Full-Stack Developer
-                  </p>
-                  <p className="text-lg">
-                    Passionate about developing innovative and user-centric web applications. Eager to apply my skills in a dynamic and challenging environment.
-                  </p>
-                  <div className="flex items-center space-x-4 text-muted-foreground">
-                    <MapPin className="h-5 w-5" />
-                    <span>Long Beach, CA</span>
-                  </div>
-                  <div className="flex space-x-4 pt-2">
-                    <a href="https://github.com/mel418" target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline" size="icon"><Github /></Button>
-                    </a>
-                    <a href="https://linkedin.com/in/melody-gatan" target="_blank" rel="noopener noreferrer">
-                       <Button variant="outline" size="icon"><Linkedin /></Button>
-                    </a>
-                    <a href="mailto:melodygatan@gmail.com">
-                       <Button variant="outline" size="icon"><Mail /></Button>
-                    </a>
-                  </div>
-                   <NowPlaying song={song} />
+              <div className="relative">
+                {/* Floating matcha ambient blobs */}
+                <div className="pointer-events-none absolute -top-16 -right-8 h-56 w-56 rounded-full bg-primary/10 blur-3xl animate-float" />
+                <div className="pointer-events-none absolute -bottom-16 -left-8 h-44 w-44 rounded-full bg-primary/10 blur-3xl animate-float-slow" />
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center relative">
+                  <AnimateIn direction="left" className="md:col-span-1 flex justify-center">
+                    <div className="relative inline-flex">
+                      <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl animate-pulse-glow" />
+                      <Image
+                        src="/PFP2.JPG"
+                        data-ai-hint="professional portrait"
+                        alt="Melody Gatan"
+                        width={250}
+                        height={250}
+                        className="relative z-10 rounded-full shadow-lg border-4 border-primary"
+                      />
+                    </div>
+                  </AnimateIn>
+
+                  <AnimateIn direction="right" delay={100} className="md:col-span-2 space-y-4">
+                    <h1 className="text-3xl sm:text-5xl font-headline font-bold">Melody Gatan</h1>
+                    <p className="text-base sm:text-xl font-semibold animate-shimmer-text">
+                      Software Engineer | Full-Stack Developer
+                    </p>
+                    <p className="text-sm sm:text-base text-muted-foreground">
+                      Passionate about developing innovative and user-centric web applications. Eager to apply my skills in a dynamic and challenging environment.
+                    </p>
+                    <div className="flex items-center space-x-2 text-muted-foreground text-sm">
+                      <MapPin className="h-4 w-4 shrink-0" />
+                      <span>Long Beach, CA</span>
+                    </div>
+                    <div className="flex space-x-3 pt-1">
+                      <a href="https://github.com/mel418" target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline" size="icon" className="hover:border-primary hover:text-primary transition-colors">
+                          <Github />
+                        </Button>
+                      </a>
+                      <a href="https://linkedin.com/in/melody-gatan" target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline" size="icon" className="hover:border-primary hover:text-primary transition-colors">
+                          <Linkedin />
+                        </Button>
+                      </a>
+                      <a href="mailto:melodygatan@gmail.com">
+                        <Button variant="outline" size="icon" className="hover:border-primary hover:text-primary transition-colors">
+                          <Mail />
+                        </Button>
+                      </a>
+                    </div>
+                    <NowPlaying song={song} />
+                  </AnimateIn>
                 </div>
               </div>
             </Section>
-            
+
+            {/* EXPERIENCE */}
             <Section id="experience" icon={Briefcase} title="Experience">
-               <div className="space-y-8">
-                <Card className="bg-card">
-                  <CardHeader>
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <CardTitle className="text-2xl text-primary">Web Developer Intern</CardTitle>
-                        <CardDescription className="text-lg">CSULB Esports Association</CardDescription>
+              <div className="space-y-6">
+                <AnimateIn delay={0}>
+                  <Card className="bg-card hover:shadow-lg transition-shadow duration-300">
+                    <CardHeader>
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+                        <div>
+                          <CardTitle className="text-lg sm:text-2xl text-primary">Software Engineer (Contract)</CardTitle>
+                          <CardDescription className="text-sm sm:text-base">Modo Matcha</CardDescription>
+                        </div>
+                        <p className="text-xs sm:text-sm text-muted-foreground shrink-0">July 2025</p>
                       </div>
-                      <p className="text-muted-foreground">Sept 2023 - July 2024</p>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="list-disc pl-5 space-y-2 text-base">
-                      <li>Reduced database query response time by 60% through PHP/MySQL optimization, serving 500+ users with 99.2% uptime.</li>
-                      <li>Decreased manual registration processing time by 75% by engineering automated player tryouts system with PHP/MySQL, successfully processing 200+ signups per season with zero data loss.</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-                <Card className="bg-card">
-                  <CardHeader>
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <CardTitle className="text-2xl text-primary">Secretary</CardTitle>
-                        <CardDescription className="text-lg">Women in Computing (WiC) - CSULB</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                        <li>Engineered an enterprise-grade kitchen display system using TypeScript and Next.js, processing 145+ concurrent orders with sub-second latency and achieving 100% system uptime during the official Sega × Demon Slayer collab event.</li>
+                        <li>Architected real-time order management platform utilizing distributed Firestore database, enabling seamless coordination between front-of-house and kitchen operations with automatic order archiving.</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </AnimateIn>
+
+                <AnimateIn delay={100}>
+                  <Card className="bg-card hover:shadow-lg transition-shadow duration-300">
+                    <CardHeader>
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+                        <div>
+                          <CardTitle className="text-lg sm:text-2xl text-primary">Web Developer</CardTitle>
+                          <CardDescription className="text-sm sm:text-base">CSULB Esports Association</CardDescription>
+                        </div>
+                        <p className="text-xs sm:text-sm text-muted-foreground shrink-0">Sept 2023 – July 2024</p>
                       </div>
-                      <p className="text-muted-foreground">Aug 2023 - April 2024</p>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                     <ul className="list-disc pl-5 space-y-2 text-base">
-                      <li>Increased member engagement by 35% by automating weekly newsletter delivery to 150+ members using MailChimp with targeted content strategy.</li>
-                      <li>Boosted workshop attendance by 45% coordinating 8 technical workshops with 35+ attendees each.</li>
-                       <li>Maintained digital archives for 20+ organization documents and meeting notes.</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-                 <Card className="bg-card">
-                  <CardHeader>
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <CardTitle className="text-2xl text-primary">Fulfillment Expert</CardTitle>
-                        <CardDescription className="text-lg">Target</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                        <li>Reduced database query response time by 60% through PHP/MySQL optimization, serving 500+ users with 99.2% uptime.</li>
+                        <li>Decreased manual registration processing time by 75% by engineering automated player tryouts system with PHP/MySQL, successfully processing 200+ signups per season with zero data loss.</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </AnimateIn>
+
+                <AnimateIn delay={200}>
+                  <Card className="bg-card hover:shadow-lg transition-shadow duration-300">
+                    <CardHeader>
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+                        <div>
+                          <CardTitle className="text-lg sm:text-2xl text-primary">Secretary</CardTitle>
+                          <CardDescription className="text-sm sm:text-base">Women in Computing (WiC) – CSULB</CardDescription>
+                        </div>
+                        <p className="text-xs sm:text-sm text-muted-foreground shrink-0">Aug 2023 – Apr 2024</p>
                       </div>
-                      <p className="text-muted-foreground">Aug 2021 - Present</p>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                     <ul className="list-disc pl-5 space-y-2 text-base">
-                      <li>Process 100+ daily orders while maintaining 98% accuracy rate and trained 3 new team members.</li>
-                      <li>Troubleshoot inventory management software issues for team of 8.</li>
-                    </ul>
-                  </CardContent>
-                </Card>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                        <li>Increased member engagement by 35% by automating weekly newsletter delivery to 150+ members using MailChimp with targeted content strategy.</li>
+                        <li>Boosted workshop attendance by 45% coordinating 8 technical workshops with 35+ attendees each.</li>
+                        <li>Maintained digital archives for 20+ organization documents and meeting notes.</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </AnimateIn>
+
+                <AnimateIn delay={300}>
+                  <Card className="bg-card hover:shadow-lg transition-shadow duration-300">
+                    <CardHeader>
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+                        <div>
+                          <CardTitle className="text-lg sm:text-2xl text-primary">Fulfillment Expert</CardTitle>
+                          <CardDescription className="text-sm sm:text-base">Target</CardDescription>
+                        </div>
+                        <p className="text-xs sm:text-sm text-muted-foreground shrink-0">Aug 2021 – Present</p>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                        <li>Process 100+ daily orders while maintaining 98% accuracy rate and trained 3 new team members.</li>
+                        <li>Troubleshoot inventory management software issues for team of 8.</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </AnimateIn>
               </div>
             </Section>
 
-
+            {/* PROJECTS */}
             <Section id="projects" icon={Play} title="Projects">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {projects.map((project) => (
-                  <ProjectCard key={project.title} {...project} />
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
+                {projects.map((project, i) => (
+                  <AnimateIn key={project.title} delay={i * 120} className="h-full">
+                    <ProjectCard {...project} />
+                  </AnimateIn>
                 ))}
               </div>
             </Section>
 
+            {/* SKILLS */}
             <Section id="skills" icon={Code} title="Technical Skills">
-            <TooltipProvider>
-              <div className="space-y-12">
-                <div>
-                  <h3 className="text-2xl font-semibold mb-4">Languages</h3>
-                    <div className="flex flex-wrap gap-4">
+              <TooltipProvider>
+                <div className="space-y-10">
+                  <AnimateIn>
+                    <div>
+                      <h3 className="text-lg sm:text-2xl font-semibold mb-4">Languages</h3>
+                      <div className="flex flex-wrap gap-3 sm:gap-4">
                         {skills.languages.map((skill) => (
                           <Tooltip key={skill.id}>
                             <TooltipTrigger>
-                              <img src={`https://skillicons.dev/icons?i=${skill.id}`} alt={`${skill.name} icon`} className="h-20 w-20" />
+                              <img
+                                src={`https://skillicons.dev/icons?i=${skill.id}`}
+                                alt={`${skill.name} icon`}
+                                className="h-14 w-14 sm:h-20 sm:w-20 transition-transform duration-200 hover:scale-110 hover:-translate-y-1"
+                              />
                             </TooltipTrigger>
-                            <TooltipContent>
-                              <p>{skill.name}</p>
-                            </TooltipContent>
+                            <TooltipContent><p>{skill.name}</p></TooltipContent>
                           </Tooltip>
                         ))}
+                      </div>
                     </div>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-semibold mb-4">Web Development</h3>
-                   <div className="flex flex-wrap gap-4">
+                  </AnimateIn>
+
+                  <AnimateIn delay={100}>
+                    <div>
+                      <h3 className="text-lg sm:text-2xl font-semibold mb-4">Web Development</h3>
+                      <div className="flex flex-wrap gap-3 sm:gap-4">
                         {skills.web.map((skill) => (
                           <Tooltip key={skill.id}>
                             <TooltipTrigger>
-                              <img src={`https://skillicons.dev/icons?i=${skill.id}`} alt={`${skill.name} icon`} className="h-20 w-20" />
+                              <img
+                                src={`https://skillicons.dev/icons?i=${skill.id}`}
+                                alt={`${skill.name} icon`}
+                                className="h-14 w-14 sm:h-20 sm:w-20 transition-transform duration-200 hover:scale-110 hover:-translate-y-1"
+                              />
                             </TooltipTrigger>
-                            <TooltipContent>
-                              <p>{skill.name}</p>
-                            </TooltipContent>
+                            <TooltipContent><p>{skill.name}</p></TooltipContent>
                           </Tooltip>
                         ))}
+                      </div>
                     </div>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-semibold mb-4">Databases</h3>
-                  <div className="flex flex-wrap gap-4">
+                  </AnimateIn>
+
+                  <AnimateIn delay={200}>
+                    <div>
+                      <h3 className="text-lg sm:text-2xl font-semibold mb-4">Databases</h3>
+                      <div className="flex flex-wrap gap-3 sm:gap-4">
                         {skills.databases.map((skill) => (
-                           <Tooltip key={skill.id}>
+                          <Tooltip key={skill.id}>
                             <TooltipTrigger>
-                              <img src={`https://skillicons.dev/icons?i=${skill.id}`} alt={`${skill.name} icon`} className="h-20 w-20" />
+                              <img
+                                src={`https://skillicons.dev/icons?i=${skill.id}`}
+                                alt={`${skill.name} icon`}
+                                className="h-14 w-14 sm:h-20 sm:w-20 transition-transform duration-200 hover:scale-110 hover:-translate-y-1"
+                              />
                             </TooltipTrigger>
-                            <TooltipContent>
-                              <p>{skill.name}</p>
-                            </TooltipContent>
+                            <TooltipContent><p>{skill.name}</p></TooltipContent>
                           </Tooltip>
                         ))}
+                      </div>
                     </div>
-                </div>
-                 <div>
-                  <h3 className="text-2xl font-semibold mb-4">Tools & Technologies</h3>
-                   <div className="flex flex-wrap gap-4">
+                  </AnimateIn>
+
+                  <AnimateIn delay={300}>
+                    <div>
+                      <h3 className="text-lg sm:text-2xl font-semibold mb-4">Tools & Technologies</h3>
+                      <div className="flex flex-wrap gap-3 sm:gap-4">
                         {skills.tools.map((skill) => (
                           <Tooltip key={skill.id}>
                             <TooltipTrigger>
-                              <img src={`https://skillicons.dev/icons?i=${skill.id}`} alt={`${skill.name} icon`} className="h-20 w-20" />
+                              <img
+                                src={`https://skillicons.dev/icons?i=${skill.id}`}
+                                alt={`${skill.name} icon`}
+                                className="h-14 w-14 sm:h-20 sm:w-20 transition-transform duration-200 hover:scale-110 hover:-translate-y-1"
+                              />
                             </TooltipTrigger>
-                            <TooltipContent>
-                              <p>{skill.name}</p>
-                            </TooltipContent>
+                            <TooltipContent><p>{skill.name}</p></TooltipContent>
                           </Tooltip>
                         ))}
+                      </div>
                     </div>
+                  </AnimateIn>
                 </div>
-              </div>
               </TooltipProvider>
             </Section>
 
+            {/* EDUCATION */}
             <Section id="education" icon={GraduationCap} title="Education">
               <div className="space-y-6">
-                <Card className="bg-card">
-                  <CardHeader>
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <CardTitle className="text-2xl text-primary">California State University, Long Beach</CardTitle>
-                        <CardDescription className="text-lg">B.S. in Computer Science (GPA: 3.6)</CardDescription>
+                <AnimateIn>
+                  <Card className="bg-card hover:shadow-lg transition-shadow duration-300">
+                    <CardHeader>
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+                        <div>
+                          <CardTitle className="text-lg sm:text-2xl text-primary">California State University, Long Beach</CardTitle>
+                          <CardDescription className="text-sm sm:text-base">B.S. in Computer Science (GPA: 3.66)</CardDescription>
+                        </div>
+                        <p className="text-xs sm:text-sm text-muted-foreground shrink-0">Graduated December 2025</p>
                       </div>
-                      <p className="text-muted-foreground">Expected Dec 2025</p>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2">Relevant Coursework:</h4>
-                      <p>Data Structures, Algorithms, Discrete Structures, Database Fundamentals, Object-Oriented Programming, System Programming, Operating Systems, Mobile App Development.</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-lg mb-2 flex items-center gap-2"><Award />Honors:</h4>
-                      <p>President’s List (Spring 2024), Dean’s List (Fall 2023, Spring 2024)</p>
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card className="bg-card">
-                   <CardHeader>
-                       <h4 className="font-semibold text-lg mb-2 flex items-center gap-2"><Users />Affiliations:</h4>
-                   </CardHeader>
-                   <CardContent>
-                     <p>WiC (Women in Computing), ACM (Association for Computing Machinery), SWE (Society of Women Engineers)</p>
-                   </CardContent>
-                </Card>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div>
+                        <h4 className="font-semibold text-sm sm:text-base mb-2">Relevant Coursework:</h4>
+                        <p className="text-sm sm:text-base">Data Structures, Algorithms, Discrete Structures, Database Fundamentals, Object-Oriented Programming, System Programming, Operating Systems, Mobile App Development.</p>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-sm sm:text-base mb-2 flex items-center gap-2">
+                          <Award className="h-4 w-4" />Honors:
+                        </h4>
+                        <p className="text-sm sm:text-base">President's List (3x) | Dean's List (2x)</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </AnimateIn>
+
+                <AnimateIn delay={150}>
+                  <Card className="bg-card hover:shadow-lg transition-shadow duration-300">
+                    <CardHeader>
+                      <h4 className="font-semibold text-sm sm:text-base flex items-center gap-2">
+                        <Users className="h-4 w-4" />Affiliations:
+                      </h4>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm sm:text-base">WiC (Women in Computing), ACM (Association for Computing Machinery), SWE (Society of Women Engineers)</p>
+                    </CardContent>
+                  </Card>
+                </AnimateIn>
               </div>
             </Section>
-            
+
+            {/* CONTACT */}
             <Section id="contact" icon={Mail} title="Contact Me">
-              <Card className="max-w-2xl mx-auto bg-card">
-                <CardHeader>
-                  <CardTitle>Get in Touch</CardTitle>
-                  <CardDescription>Have a question or want to work together? Send me a message!</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form action="mailto:melodygatan@gmail.com" method="post" encType="text/plain" className="space-y-4">
-                    <Input type="text" name="name" placeholder="Your Name" required />
-                    <Input type="email" name="email" placeholder="Your Email" required />
-                    <Textarea name="message" placeholder="Your Message" rows={5} required />
-                    <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                      <Send className="mr-2 h-4 w-4" /> Send Message
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
+              <AnimateIn>
+                <Card className="max-w-2xl mx-auto bg-card">
+                  <CardHeader>
+                    <CardTitle>Get in Touch</CardTitle>
+                    <CardDescription>Have a question or want to work together? Send me a message!</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <form action="mailto:melodygatan@gmail.com" method="post" encType="text/plain" className="space-y-4">
+                      <Input type="text" name="name" placeholder="Your Name" required />
+                      <Input type="email" name="email" placeholder="Your Email" required />
+                      <Textarea name="message" placeholder="Your Message" rows={5} required />
+                      <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                        <Send className="mr-2 h-4 w-4" /> Send Message
+                      </Button>
+                    </form>
+                  </CardContent>
+                </Card>
+              </AnimateIn>
             </Section>
+
           </div>
         </main>
         <footer className="text-center p-4 text-xs text-muted-foreground">

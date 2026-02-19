@@ -38,7 +38,13 @@ export function NowPlaying({ song }: { song: Song }) {
           )}
         </div>
         <div className="flex min-w-0 flex-1 flex-col">
-          <p className="truncate font-semibold text-sm">
+          <p className="flex items-center gap-2 truncate font-semibold text-sm">
+            {song?.isPlaying && (
+              <span className="relative flex h-2 w-2 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+              </span>
+            )}
             {song?.isPlaying ? song.title : 'Not playing'}
           </p>
           <p className="truncate text-xs text-muted-foreground">
